@@ -20,3 +20,6 @@ They two combines cascade classifier and tracking algorithm, which get a trade-o
 It is designed by combining cascade classifier, staple tracking algorithm and convolution neural network.
 The data set for training the CNN is picked from the result of cascade classifier, only in this way 
 can we improve the whole performance of this program.
+
+## serial
+Using USB to serial port to transmit location information.
