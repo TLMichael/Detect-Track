@@ -20,10 +20,10 @@ void limitRect(cv::Rect &location, cv::Size sz)
 
 int main(int argc, char * argv[])
 {
-    //VideoWriter output_dst("detectracker.avi", CV_FOURCC('M', 'J', 'P', 'G'), 23, Size(640, 480), 1);
+    //VideoWriter output_dst("newtracker.avi", CV_FOURCC('M', 'J', 'P', 'G'), 60, Size(640, 480), 1);
     Template tracker;
     cv::VideoCapture capture;
-    capture.open("red.avi");
+    capture.open("new.avi");
     if(!capture.isOpened())
     {
         std::cout << "fail to open" << std::endl;
@@ -61,7 +61,7 @@ int main(int argc, char * argv[])
             std::vector<Rect> boards;
             cv::Mat frame_gray;
             cv::cvtColor( frame, frame_gray, COLOR_BGR2GRAY );
-            detector.detectMultiScale( frame_gray, boards, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(50, 50) ,Size(100, 100));
+            detector.detectMultiScale( frame_gray, boards, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(50, 50) ,Size(130, 130));
             if(boards.size() > 0)
             {
                 cout << "[debug] " << frame_num << ":" << " cascade找到" << boards.size() << "个目标" << endl;
@@ -110,9 +110,15 @@ int main(int argc, char * argv[])
             //     imwrite("../data/" + to_string(frame_num) + ".jpg", roi);
             // }
             result_rects.push_back(location);
-            if(frame_num % 30 == 0)
+            if(frame_num % 10 == 0)
             {
-                Mat roi = frame(location);
+                //在图片周围进行寻找
+                int factor = 2;
+                int newx = location.x + (1 - factor) * location.width / 2;
+                int newy = location.y + (1 - factor) * location.height / 2;
+                Rect loc = Rect(newx, newy, location.width * factor, location.height * factor);
+                limitRect(loc, frame.size());
+                Mat roi = frame(loc);
                 std::vector<Rect> boards;
                 detector.detectMultiScale( roi, boards, 1.1, 2, 
                             0|CASCADE_SCALE_IMAGE, roi.size(), roi.size());
@@ -120,6 +126,12 @@ int main(int argc, char * argv[])
                 if(boards.size() <= 0)
                 {
                     status = 0;
+                }
+                else
+                {
+                    //location = boards[0];
+                    location = Rect(boards[0].x + loc.x, boards[0].y + loc.y, boards[0].width, boards[0].height);
+                    tracker.initTracking(frame,location);
                 }
             }
         }
