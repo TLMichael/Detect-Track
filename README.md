@@ -23,3 +23,7 @@ can we improve the whole performance of this program.
 
 ## serial
 Using USB to serial port to transmit location information.
+
+## color_detect
+Specific color detection algorithm.
+You can adjust the track bar of HSV to detect the color you want to concentrate on.
