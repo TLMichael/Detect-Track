@@ -1,6 +1,10 @@
 # Detect-Track
 Two tracking algorithms(Staple and Template) organized with cascade classifier for object detection.
-
+- **Video Show**
+  - http://v.youku.com/v_show/id_XMzYxODcyNjEzMg==.html
+  - http://v.youku.com/v_show/id_XMzYxODcxODY2OA==.html
+  - https://youtu.be/zZZoJIJmQd8
+  - https://youtu.be/rImqJhreMy4
 ! Requires: OpenCV > 2.0
 
 ## TM_track
