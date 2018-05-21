@@ -5,8 +5,8 @@ Two tracking algorithms(Staple and Template) organized with cascade classifier f
   - http://v.youku.com/v_show/id_XMzYxODcxODY2OA==.html
   - https://youtu.be/zZZoJIJmQd8
   - https://youtu.be/rImqJhreMy4
+  
 ! Requires: OpenCV > 2.0
-
 ## TM_track
 It is designed by template matching algorithm, which predict the object position in the next frame.
 
