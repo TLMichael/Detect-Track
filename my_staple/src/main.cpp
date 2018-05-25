@@ -13,7 +13,7 @@
 int main(int argc, char * argv[])
 {
     cv::VideoCapture capture;
-    capture.open("red.avi");
+    capture.open( 0 );
     if(!capture.isOpened())
     {
         std::cout << "fail to open" << std::endl;

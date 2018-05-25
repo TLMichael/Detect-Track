@@ -16,7 +16,7 @@ int main(int argc, const char** argv)
     TickMeter t;
 
     string cascadeName = "cascade.xml";
-    string inputName = "red.avi";
+    string inputName = "new.avi";
 
     if( !cascade.load( cascadeName ) )
     {
@@ -65,7 +65,7 @@ void detectAndDraw(Mat& img, CascadeClassifier& cascade, double scale, bool tryf
 
     cascade.detectMultiScale(smallImg, boards, 
                             1.1, 2, 0|CASCADE_SCALE_IMAGE, 
-                            Size(50, 50), Size(100, 100));
+                            Size(30, 30), Size(80, 80));
     if(tryflip)
     {
         flip(smallImg, smallImg, 1);

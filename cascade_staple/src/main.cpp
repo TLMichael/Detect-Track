@@ -23,7 +23,7 @@ int main(int argc, char * argv[])
     //VideoWriter output_dst("detectracker.avi", CV_FOURCC('M', 'J', 'P', 'G'), 23, Size(640, 480), 1);
     STAPLE_TRACKER staple;
     cv::VideoCapture capture;
-    capture.open("blue_dark.avi");
+    capture.open("new.avi");
     if(!capture.isOpened())
     {
         std::cout << "fail to open" << std::endl;
