@@ -1,8 +1,12 @@
 # Detect-Track
 Two tracking algorithms(Staple and Template) organized with cascade classifier for object detection.
-
+- **Video Show**
+  - http://v.youku.com/v_show/id_XMzYxODcyNjEzMg==.html
+  - http://v.youku.com/v_show/id_XMzYxODcxODY2OA==.html
+  - https://youtu.be/zZZoJIJmQd8
+  - https://youtu.be/rImqJhreMy4
+  
 ! Requires: OpenCV > 2.0
-
 ## TM_track
 It is designed by template matching algorithm, which predict the object position in the next frame.
 
@@ -23,3 +27,7 @@ can we improve the whole performance of this program.
 
 ## serial
 Using USB to serial port to transmit location information.
+
+## color_detect
+Specific color detection algorithm.
+You can adjust the track bar of HSV to detect the color you want to concentrate on.
