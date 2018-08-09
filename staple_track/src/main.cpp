@@ -10,6 +10,45 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
+using namespace std;
+using namespace cv;
+
+bool gotBB = false;
+Rect box;
+bool drawingBox = true;
+
+void onMouse(int event, int x, int y, int flags, void *param)
+{
+    switch(event)
+    {
+        case CV_EVENT_MOUSEMOVE:
+            if (drawingBox)
+            {
+                box.width = x - box.x;
+                box.height = y - box.y;
+            }
+            break;
+        case CV_EVENT_LBUTTONDOWN:
+            drawingBox = true;
+            box = Rect(x, y, 0, 0);
+            break;
+        case CV_EVENT_LBUTTONUP:
+            drawingBox = false;
+            if(box.width < 0)
+            {
+                box.x +=box.width;
+                box.width *= -1;
+            }
+            if(box.height < 0)
+            {
+                box.y += box.height;
+                box.height *= -1;
+            }
+            gotBB = true;
+            break;
+    }
+}
+
 int main(int argc, char * argv[])
 {
     cv::VideoCapture capture;
@@ -20,13 +59,27 @@ int main(int argc, char * argv[])
         exit(0);
     }
     //int frame_number = capture.get(CV_CAP_PROP_FRAME_COUNT);
-
-    cv::Mat image;
-    capture >> image;
     
+    cvNamedWindow("Tracker", CV_WINDOW_AUTOSIZE);
+    cvSetMouseCallback("Tracker", onMouse, NULL);
+
+    Mat image;
+    capture >> image;
+    while (!gotBB)
+    {
+        capture >> image;
+
+        imshow("Tracker", image);
+        if (cvWaitKey(10) == 'q')
+            return 1;
+    }
+    cvSetMouseCallback("Tracker", NULL, NULL);
+
+
     STAPLE_TRACKER staple;
 
-    cv::Rect_<float> location(230, 220, 75, 75);
+    cv::Rect_<float> location;
+    location = box;
     staple.tracker_staple_initialize(image, location);
     staple.tracker_staple_train(image, true);
 
