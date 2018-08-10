@@ -16,3 +16,6 @@ beifen
 
 # Cascade
 *.xml
+
+# YOLO
+*.weights

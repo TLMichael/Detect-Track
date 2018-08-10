@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(fuck)
+project(detect)
 
 SET(CMAKE_C_COMPILER g++)
 if(CMAKE_COMPILER_IS_GNUCXX)
@@ -20,11 +20,13 @@ if(CMAKE_VERSION VERSION_LESS "2.8.11")
 endif()
 
 
-file(GLOB SRCS ./*.cpp)
-file(GLOB HDRS ./*.h*)
+file(GLOB SRCS ./src/*.cpp)
+file(GLOB HDRS ./src/*.h*)
 
 set(traincascade_files ${SRCS} ${HDRS})
 
-add_executable(fuck ${traincascade_files})
+add_executable(detect ${traincascade_files})
 
-target_link_libraries(fuck ${OpenCV_LIBS})
+# include_directories(./src)
+
+target_link_libraries(detect ${OpenCV_LIBS} libdarknet.so)
