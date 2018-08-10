@@ -1,5 +1,5 @@
 # Detect-Track
-Four tracking algorithms(Staple and Template) organized with cascade classifier for object detection.
+Four tracking algorithms organized with cascade classifier or YOLOv3 for object detection.
 - **Video Show**
   - http://v.youku.com/v_show/id_XMzYxODcyNjEzMg==.html
   - http://v.youku.com/v_show/id_XMzYxODcxODY2OA==.html
