@@ -1,33 +1,43 @@
 # Detect-Track
-Two tracking algorithms(Staple and Template) organized with cascade classifier for object detection.
+Four tracking algorithms(Staple and Template) organized with cascade classifier for object detection.
 - **Video Show**
   - http://v.youku.com/v_show/id_XMzYxODcyNjEzMg==.html
   - http://v.youku.com/v_show/id_XMzYxODcxODY2OA==.html
   - https://youtu.be/zZZoJIJmQd8
   - https://youtu.be/rImqJhreMy4
   
-! Requires: OpenCV > 2.0
-## TM_track
-It is designed by template matching algorithm, which predict the object position in the next frame.
+! Requires: OpenCV > 3.1.0
 
-## my_staple
-It is designed by Staple tracking algorithm, which is a tracker that combines two image patch representations that are sensitive to complementary factors to learn a model that is inherently robust to both colour changes and deformations.
+## [cascade_staple](cascade_staple)
+- 检测器：级联分类器
+- 跟踪器：staple
 
-## detect_fast
-It is designed by cascade classifier algorithm, which is a face detection framework that is capable of processing images extremely rapidly while achieving high detection rates.
+## [cascade_TM](cascade_TM)
+- 检测器：级联分类器
+- 跟踪器：Template tracker
 
-## cascade_TM & cascade_staple
-They two combines cascade classifier and tracking algorithm, which get a trade-off between speed and accurancy. But the result stills acceptable.
+## [yolo_TM](yolo_TM)
+- 检测器：YOLOv3
+- 跟踪器：Template tracker
 
-! Requires: OpenCV > 3.2
-## cascade_staple_cnn
-It is designed by combining cascade classifier, staple tracking algorithm and convolution neural network.
-The data set for training the CNN is picked from the result of cascade classifier, only in this way 
-can we improve the whole performance of this program.
+## [yolo_KCF](yolo_KCF)
+- 检测器：YOLOv3
+- 跟踪器：KCF
 
-## serial
-Using USB to serial port to transmit location information.
+## [track_TM](track_TM)
+- 跟踪器：Template tracker
 
-## color_detect
-Specific color detection algorithm.
-You can adjust the track bar of HSV to detect the color you want to concentrate on.
+## [track_staple](track_staple)
+- 跟踪器：staple
+
+## [track_opencv](track_opencv)
+- 跟踪器："BOOSTING", "MIL", "KCF", "TLD","MEDIANFLOW", "GOTURN", "CSRT"
+
+## [color_detect](color_detect)
+- 颜色检测器
+
+## [serial_linux](serial_linux)
+- linux串口通信封装
+
+## [serial_windows](serial_windows)
+- windows串口通信封装
