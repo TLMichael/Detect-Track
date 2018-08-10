@@ -17,10 +17,13 @@ Four tracking algorithms(Staple and Template) organized with cascade classifier 
 - 跟踪器：Template tracker
 
 ## [yolo_TM](yolo_TM)
+- Requires: 自行编译[darknet](https://github.com/AlexeyAB/darknet)，将生成的darknet.so复制到/usr/lib/目录下
 - 检测器：YOLOv3
 - 跟踪器：Template tracker
 
 ## [yolo_KCF](yolo_KCF)
+- Requires: Compiled with OpenCV_contrib
+- Requires: 自行编译[darknet](https://github.com/AlexeyAB/darknet)，将生成的darknet.so复制到/usr/lib/目录下
 - 检测器：YOLOv3
 - 跟踪器：KCF
 
@@ -31,6 +34,7 @@ Four tracking algorithms(Staple and Template) organized with cascade classifier 
 - 跟踪器：staple
 
 ## [track_opencv](track_opencv)
+- Requires: Compiled with OpenCV_contrib
 - 跟踪器："BOOSTING", "MIL", "KCF", "TLD","MEDIANFLOW", "GOTURN", "CSRT"
 
 ## [color_detect](color_detect)
