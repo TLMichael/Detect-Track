@@ -39,6 +39,7 @@ struct bbox_t_container {
 #include <deque>
 #include <algorithm>
 
+#define OPENCV
 #ifdef OPENCV
 #include <opencv2/opencv.hpp>            // C++
 #include "opencv2/highgui/highgui_c.h"    // C
@@ -52,7 +53,7 @@ extern "C" YOLODLL_API int dispose();
 extern "C" YOLODLL_API int get_device_count();
 extern "C" YOLODLL_API int get_device_name(int gpu, char* deviceName);
 
-class YOLODetector {
+class Detector {
     std::shared_ptr<void> detector_gpu_ptr;
     std::deque<std::vector<bbox_t>> prev_bbox_vec_deque;
     const int cur_gpu_id;
@@ -60,8 +61,8 @@ public:
     float nms = .4;
     bool wait_stream;
 
-    YOLODLL_API YOLODetector(std::string cfg_filename, std::string weight_filename, int gpu_id = 0);
-    YOLODLL_API ~YOLODetector();
+    YOLODLL_API Detector(std::string cfg_filename, std::string weight_filename, int gpu_id = 0);
+    YOLODLL_API ~Detector();
 
     YOLODLL_API std::vector<bbox_t> detect(std::string image_filename, float thresh = 0.2, bool use_mean = false);
     YOLODLL_API std::vector<bbox_t> detect(image_t img, float thresh = 0.2, bool use_mean = false);
@@ -84,7 +85,6 @@ public:
         return detection_boxes;
     }
 
-#define OPENCV
 #ifdef OPENCV
     std::vector<bbox_t> detect(cv::Mat mat, float thresh = 0.2, bool use_mean = false)
     {

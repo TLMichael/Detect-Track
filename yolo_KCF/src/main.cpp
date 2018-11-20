@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     // Create a detector
     string cfgDir = "cfg/yolov3-head.cfg";
     string weightDir = "cfg/yolov3-head.weights";
-    YOLODetector detector(cfgDir, weightDir);
+    Detector detector(cfgDir, weightDir);
 
     // Create a video stream
     cv::VideoCapture capture( 0 );  
